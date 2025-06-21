@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Prannkster</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Courier New', monospace;
+      background-color: #111;
+      color: #f5f5f5;
+    }
+
+    body {
+      padding: 30px;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #370bd4;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #555;
+      padding-bottom: 10px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .section {
+      background-color: #222;
+      border: 2px solid #444;
+      padding: 15px;
+      border-radius: 6px;
+      box-shadow: 0 0 5px #000;
+    }
+
+    img.pic, img.feature {
+      width: 100%;
+      max-width: 200px;
+      border-radius: 4px;
+      border: 2px solid #555;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    h3 {
+      margin-top: 10px;
+      color: #0c40cf;
+    }
+
+    .extra {
+      margin-top: 30px;
+    }
+
+    p {
+      margin: 5px 0;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="particleCanvas"></canvas>
+
+<div class="container">
+  <div class="title">!ELVAN%  WEBSITE</div>
+
+  <div class="grid">
+    <div class="section">
+      <img src="elvan.jpg" alt="profile" class="pic">
+      <p><strong>Code:</strong> FALS</p>
+      <p><strong>SUPPORT:</strong> NONE SUPPORT</p>
+      <p><strong>TIER:</strong> +SS</p>
+      <p><strong>???:</strong> questioning</p>
+    </div>
+
+    <div class="section">
+      <h3>!ANiMANGAs</h3>
+      <img src="elvan2.jpg" alt="animanga" class="feature">
+      <p>Spy x Family, tokyo revengers, death note, free, gintama, kuroko no basket, bsd, promare++</p>
+
+      <h3>!COMFY CHARAs</h3>
+      <img src="elvan3.jpg" alt="charas" class="feature">
+      <p>penguin, cold, sleepy eyes, music 4life</p>
+      <h3>!MUSICiAN%</h3>
+      <img src="elvan4.jpg" alt="music" class="feature">
+      <p>CAS, Holllywood ending, eminem, svt</p>
+    </div>
+  </div>
+
+  <div class="section extra">
+    <h3>CODE TRUE</h3>
+    <p><strong></strong> Even the glitches are more stable than my mental health</p>
+  </div>
+</div>
+
+<script>
+  const canvas = document.getElementById('particleCanvas');
+  const ctx = canvas.getContext('2d');
+  let particlesArray = [];
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  class Particle {
+    constructor() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.size = Math.random() * 2 + 1;
+      this.speedX = Math.random() * 0.5 - 0.25;
+      this.speedY = Math.random() * 0.5 - 0.25;
+      this.color = '#a58cff';
+    }
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+
+      if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+      }
+    }
+    draw() {
+      ctx.fillStyle = this.color;
+      ctx.fillRect(this.x, this.y, this.size, this.size);
+    }
+  }
+
+  function init() {
+    particlesArray = [];
+    for (let i = 0; i < 100; i++) {
+      particlesArray.push(new Particle());
+    }
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particlesArray.forEach(p => {
+      p.update();
+      p.draw();
+    });
+    requestAnimationFrame(animate);
+  }
+
+  init();
+  animate();
+
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    init();
+  });
+</script>
+
+</body>
+</html>

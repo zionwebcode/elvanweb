@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VIRUS WARNING</title>
+  <style>
+    body {
+      background-color: #1c1c1c;
+      font-family: 'Courier New', monospace;
+      color: #eee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .window {
+      background-color: #2e2e2e;
+      border: 3px solid #555;
+      width: 320px;
+      box-shadow: 0 0 10px #000;
+    }
+
+    .title-bar {
+      background-color: #444;
+      color: #fff;
+      padding: 6px 12px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .content {
+      padding: 20px;
+      color: #ddd;
+      text-align: center;
+    }
+
+    .content p {
+      font-size: 16px;
+      color: #2347eb;
+    }
+
+    button {
+      background-color: #311c88;
+      border: 2px solid #aaa;
+      color: #fff;
+      padding: 6px 20px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 15px;
+      font-family: 'Courier New', monospace;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      color: #ccc;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="window">
+    <div class="title-bar">
+      <span>🦆 ELVAN WEBSITE</span>
+      <button class="close-btn" onclick="alert('Window closed')">✕</button>
+    </div>
+    <div class="content">
+      <p>🦆 CONNECT TO WEB?</p>
+      <button onclick="window.location.href='profile.html'">OK</button>
+    </div>
+  </div>
+</body>
+</html>
